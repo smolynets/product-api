@@ -17,7 +17,7 @@ def test_category_list(client):
 
 def test_category_create(client):
     assert Category.objects.count() == 0
-    response = client.post("/category-list/", data={"name": "test"})
+    response = client.post("/category/", data={"name": "test"})
     assert response.status_code == 201
     assert response.json() == {'id': 1, 'name': 'test'}
     assert Category.objects.count() == 1
