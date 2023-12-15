@@ -17,6 +17,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from productapp.urls import backend_urlpatterns
+
+
 urlpatterns = [
     path('admin/', admin.site.urls),
 ]
+
+# add new urls
+urlpatterns += backend_urlpatterns
