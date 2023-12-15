@@ -4,6 +4,8 @@ from django.core.exceptions import ValidationError
 
 from productapp.models import Category
 
+pytestmark = pytest.mark.django_db
+
 
 @pytest.fixture
 def ten_nested_categories():
@@ -21,12 +23,10 @@ def ten_nested_categories():
     return category_eleven
 
 
-@pytest.mark.django_db
 def test_category_parent(ten_nested_categories):
     assert Category.objects.count() == 11
 
 
-@pytest.mark.django_db
 def test_category_limit(ten_nested_categories):
     category_eleven = ten_nested_categories
     with pytest.raises(Exception) as exc_info:
