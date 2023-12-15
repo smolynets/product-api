@@ -1,0 +1,7 @@
+django
+djangorestframework
+
+pytest
+pytest-django
+ipdb
+django-extensions
