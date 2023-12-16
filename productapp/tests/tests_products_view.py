@@ -75,3 +75,13 @@ def test_category_of_product_list(client):
     assert response.json() == [
         {'id': 1, 'name': 'one', 'parent': None}, {'id': 2, 'name': 'two', 'parent': None}
     ]
+
+
+def test_product_list_by_category_list(client):
+    category = Category.objects.create(name="one")
+    product = Product.objects.create(name="one", price=1)
+    response = client.get(reverse("product_list_by_category_list", args=[category.id]))
+    assert response.json() == []
+    product.categories.add(category)
+    response = client.get(reverse("product_list_by_category_list", args=[category.id]))
+    assert response.json() == [{'id': 1, 'name': 'one', 'price': '1.00', 'categories': [1]}]
