@@ -17,7 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from productapp.urls import backend_urlpatterns
+from productapp.urls import urlpatterns as backend_urlpatterns
 
 
 urlpatterns = [
