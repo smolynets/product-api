@@ -2,7 +2,7 @@ import pytest
 import json
 from django.urls import reverse
 
-from productapp.models import Category
+from productapp.models import Category, Product
 
 pytestmark = pytest.mark.django_db
 
@@ -63,3 +63,20 @@ def test_category_parents_list(client):
     assert response.json() == {
         'id': 1, 'name': 'one', 'children': [{'id': 2, 'name': 'two', 'children': []}]
     }
+
+
+def test_category_product_offering_count_apiview(client):
+    category = Category.objects.create(name="one")
+    product = Product.objects.create(name="one", price=1)
+    product.categories.add(category)
+    # Use reverse to get the URL for the view
+    url = reverse("category-product-offering-count-apiview")
+    # Append the query parameter to the URL
+    url_with_params = f"{url}?category_ids={category.id}"
+    response = client.get(url_with_params)
+    assert response.json() == [{'id': 1, 'name': 'one', 'num_products': 1}]
+    product_two = Product.objects.create(name="two", price=1)
+    product_two.categories.add(category)
+    url_with_params = f"{url}?category_ids={category.id}"
+    response = client.get(url_with_params)
+    assert response.json() == [{'id': 1, 'name': 'one', 'num_products': 2}]

@@ -26,3 +26,14 @@ class ProductSerializer(serializers.ModelSerializer):
     class Meta:
         model = Product
         fields = ("id", "name", "price", "categories")
+
+
+class CategoryOfferProductSerializer(serializers.ModelSerializer):
+    num_products = serializers.SerializerMethodField()
+
+    class Meta:
+        model = Category
+        fields = ("id", "name", "num_products")
+
+    def get_num_products(self, instance):
+        return instance.num_products
