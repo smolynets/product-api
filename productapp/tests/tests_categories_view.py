@@ -80,3 +80,20 @@ def test_category_product_offering_count_apiview(client):
     url_with_params = f"{url}?category_ids={category.id}"
     response = client.get(url_with_params)
     assert response.json() == [{'id': 1, 'name': 'one', 'num_products': 2}]
+
+
+def test_category_product_total_offering_count_apiview(client):
+    category = Category.objects.create(name="one")
+    product = Product.objects.create(name="one", price=1)
+    product.categories.add(category)
+    # Use reverse to get the URL for the view
+    url = reverse("category-product-total-offering-count-apiview")
+    # Append the query parameter to the URL
+    url_with_params = f"{url}?category_ids={category.id}"
+    response = client.get(url_with_params)
+    assert response.json() == {'num_products': 1}
+    product_two = Product.objects.create(name="two", price=1)
+    product_two.categories.add(category)
+    url_with_params = f"{url}?category_ids={category.id}"
+    response = client.get(url_with_params)
+    assert response.json() == {'num_products': 2}

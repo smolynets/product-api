@@ -7,7 +7,8 @@ from .views import (
     CategoryListAPIView,
     ProductListByCategoryView,
     CategoryDetailsView,
-    CategoryProductofferingCountAPIView
+    CategoryProductofferingCountAPIView,
+    CategoryProductTotalofferingCountAPIView
 )
 
 router = DefaultRouter()
@@ -30,6 +31,11 @@ urlpatterns = [
         'category-product-offering-count-apiview/',
         CategoryProductofferingCountAPIView.as_view(),
         name="category-product-offering-count-apiview"
+    ),
+    path(
+        'category-product-total-offering-count-apiview/',
+        CategoryProductTotalofferingCountAPIView.as_view(),
+        name="category-product-total-offering-count-apiview"
     ),
 ]
 

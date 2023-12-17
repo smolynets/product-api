@@ -5,11 +5,15 @@ from rest_framework.exceptions import APIException
 
 from productapp.models import Category, Product
 from productapp.serializers import (
-    CategorySerializer, ProductSerializer, ParentCategorySerializer, CategoryOfferProductSerializer
+    CategorySerializer,
+    ProductSerializer,
+    ParentCategorySerializer,
+    CategoryOfferProductSerializer
 )
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from django.db.models import Count
+from rest_framework.views import APIView
 
 
 class CategoryViewSet(viewsets.ModelViewSet):
@@ -69,3 +73,14 @@ class CategoryProductofferingCountAPIView(generics.ListAPIView):
         categories_query = Category.objects.filter(id__in=category_ids).distinct()
         res_with_num_products = categories_query.annotate(num_products=Count("product"))
         return res_with_num_products
+    
+
+class CategoryProductTotalofferingCountAPIView(APIView):
+    """
+    For a given list of categories, retrieve the count of product offerings in each category
+    """
+    def get(self, request, format=None):
+        category_ids = self.request.query_params.getlist('category_ids', [])
+        categories_query = Category.objects.filter(id__in=category_ids).distinct()
+        res_with_num_products = categories_query.aggregate(num_products=Count("product"))
+        return Response(res_with_num_products)
