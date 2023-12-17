@@ -54,3 +54,12 @@ def test_category_parent_update(client):
     assert response.status_code == 200
     assert response.json() == {'id': 2, 'name': 'one', 'parent': 2}
     assert Category.objects.filter(parent=2).exists()
+
+
+def test_category_parents_list(client):
+    category_one = Category.objects.create(name="one")
+    category_two = Category.objects.create(name="two", parent=category_one)
+    response = client.get(reverse("category_parents_list", args=[category_one.id]))
+    assert response.json() == {
+        'id': 1, 'name': 'one', 'children': [{'id': 2, 'name': 'two', 'children': []}]
+    }

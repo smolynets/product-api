@@ -9,6 +9,19 @@ class CategorySerializer(serializers.ModelSerializer):
         fields = ("id", "name", "parent")
 
 
+class ParentCategorySerializer(serializers.ModelSerializer):
+    children = serializers.SerializerMethodField()
+
+    class Meta:
+        model = Category
+        fields = ("id", "name", "children")
+
+    def get_children(self, instance):
+        children = Category.objects.filter(parent__id=instance.id)
+        serializer = ParentCategorySerializer(children, many=True)
+        return serializer.data
+
+
 class ProductSerializer(serializers.ModelSerializer):
     class Meta:
         model = Product
