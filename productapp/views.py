@@ -77,7 +77,7 @@ class CategoryProductofferingCountAPIView(generics.ListAPIView):
 
 class CategoryProductTotalofferingCountAPIView(APIView):
     """
-    For a given list of categories, retrieve the count of product offerings in each category
+    For a given list of categories, retrieve the total count of unique product offerings
     """
     def get(self, request, format=None):
         category_ids = self.request.query_params.getlist('category_ids', [])
