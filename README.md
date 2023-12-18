@@ -37,6 +37,7 @@ Provide a Docker Compose configuration for deploying your solution.
 ##### For set test data:
 	docker exec -it server python manage.py loaddata productapp_initial_data.json
 
-Use 0.0.0.0 url in browser
-Fow admin site - 0.0.0.0/admin
-Fow documentation - 0.0.0.0/swager
+
+Use 0.0.0.0 url in browser\
+Fow admin site - 0.0.0.0/admin\
+Fow documentation - 0.0.0.0/swager\
