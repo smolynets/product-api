@@ -40,4 +40,4 @@ Provide a Docker Compose configuration for deploying your solution.
 
 Use 0.0.0.0 url in browser\
 Fow admin site - 0.0.0.0/admin\
-Fow documentation - 0.0.0.0/swager\
+Fow documentation - 0.0.0.0/swager
