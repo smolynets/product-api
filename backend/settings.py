@@ -103,12 +103,6 @@ DATABASES = {
     }
 }
 
-# EMAIL_HOST = env('EMAIL_HOST', default='localhost')
-# EMAIL_PORT = env('EMAIL_PORT', default=25)
-# EMAIL_USE_TLS = env('EMAIL_USE_TLS', default=False)
-# EMAIL_HOST_USER = env('EMAIL_HOST_USER', default='')
-# EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD', default='')
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
