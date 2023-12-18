@@ -1,0 +1,140 @@
+[
+{
+  "model": "productapp.category",
+  "pk": 1,
+  "fields": {
+    "name": "one",
+    "parent": null
+  }
+},
+{
+  "model": "productapp.category",
+  "pk": 2,
+  "fields": {
+    "name": "two",
+    "parent": 1
+  }
+},
+{
+  "model": "productapp.category",
+  "pk": 3,
+  "fields": {
+    "name": "three",
+    "parent": 2
+  }
+},
+{
+  "model": "productapp.category",
+  "pk": 4,
+  "fields": {
+    "name": "four",
+    "parent": 1
+  }
+},
+{
+  "model": "productapp.category",
+  "pk": 5,
+  "fields": {
+    "name": "five",
+    "parent": 4
+  }
+},
+{
+  "model": "productapp.category",
+  "pk": 6,
+  "fields": {
+    "name": "six",
+    "parent": 5
+  }
+},
+{
+  "model": "productapp.category",
+  "pk": 7,
+  "fields": {
+    "name": "seven",
+    "parent": 6
+  }
+},
+{
+  "model": "productapp.category",
+  "pk": 8,
+  "fields": {
+    "name": "eight",
+    "parent": 7
+  }
+},
+{
+  "model": "productapp.category",
+  "pk": 9,
+  "fields": {
+    "name": "nine",
+    "parent": 8
+  }
+},
+{
+  "model": "productapp.category",
+  "pk": 10,
+  "fields": {
+    "name": "ten",
+    "parent": 9
+  }
+},
+{
+  "model": "productapp.category",
+  "pk": 11,
+  "fields": {
+    "name": "eleven",
+    "parent": 10
+  }
+},
+{
+  "model": "productapp.category",
+  "pk": 12,
+  "fields": {
+    "name": "twelve",
+    "parent": 11
+  }
+},
+{
+  "model": "productapp.category",
+  "pk": 13,
+  "fields": {
+    "name": "threeten",
+    "parent": 12
+  }
+},
+{
+  "model": "productapp.product",
+  "pk": 1,
+  "fields": {
+    "name": "one",
+    "price": "1.00",
+    "categories": [
+      1
+    ]
+  }
+},
+{
+  "model": "productapp.product",
+  "pk": 2,
+  "fields": {
+    "name": "two",
+    "price": "1.00",
+    "categories": [
+      1
+    ]
+  }
+},
+{
+  "model": "productapp.product",
+  "pk": 3,
+  "fields": {
+    "name": "three",
+    "price": "1.00",
+    "categories": [
+      1,
+      2
+    ]
+  }
+}
+]
