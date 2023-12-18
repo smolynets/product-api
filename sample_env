@@ -7,7 +7,7 @@ DEBUG=True
 # db settings
 ENGINE=django.db.backends.postgresql
 HOST=db
-NAME=postgres
-USER=postgres
-PASSWORD=postgres
 PORT=5432
+POSTGRES_DB=postgres
+POSTGRES_USER=postgres
+POSTGRES_PASSWORD=postgres
