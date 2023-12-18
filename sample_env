@@ -1,8 +1,10 @@
 # .env
 
 #general settings
-SECRET_KEY=mysecretkey
+# https://docs.djangoproject.com/en/5.0/topics/signing/
+SECRET_KEY="your-secret_key"
 DEBUG=True
+ALLOWED_HOSTS=0.0.0.0
 
 # db settings
 ENGINE=django.db.backends.postgresql
