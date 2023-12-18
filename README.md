@@ -9,12 +9,12 @@ Categories are characterized by a name, and products are characterized by a name
 A product can belong to multiple categories.
 #### REST API:
 ##### Implement a REST API with the following capabilities:
-a. Create, update, and delete categories and products.
-b. Change the parent category of a category.
-c. For a given list of products, retrieve all categories containing these products.
-d. For a given category, retrieve a list of all products present in this category and its descendant categories of all levels.
-e. For a given list of categories, retrieve the count of product offerings in each category.
-f. For a given list of categories, retrieve the total count of unique product offerings.
+- a. Create, update, and delete categories and products.
+- b. Change the parent category of a category.
+- c. For a given list of products, retrieve all categories containing these products.
+- d. For a given category, retrieve a list of all products present in this category and its descendant categories of all levels.
+- e. For a given list of categories, retrieve the count of product offerings in each category.
+- f. For a given list of categories, retrieve the total count of unique product offerings.
 #### OpenAPI/Swagger Specification:
 Provide a detailed specification of the API in OpenAPI/Swagger format.
 
