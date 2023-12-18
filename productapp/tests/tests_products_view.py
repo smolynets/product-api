@@ -12,16 +12,21 @@ def test_product_list(client):
     product = Product.objects.create(name="one", price=1)
     product.categories.add(category)
     response = client.get(reverse("product-list"))
-    assert response.json() == [{'id': 1, 'name': 'one', 'price': '1.00', 'categories': [1]}]
+    assert response.json() == [
+        {'id': product.id, 'name': 'one', 'price': '1.00', 'categories': [category.id]}
+    ]
     response = client.get(reverse("product-detail", args=[product.id]))
-    assert response.json() == {'id': 1, 'name': 'one', 'price': '1.00', 'categories': [1]}
+    assert response.json() == {
+        'id': product.id, 'name': 'one', 'price': '1.00', 'categories': [category.id]
+    }
 
 
 def test_product_create(client):
     assert Product.objects.count() == 0
     response = client.post("/product/", data={"name": "test", "price": 1})
+    new_product = Product.objects.get(name="test")
     assert response.status_code == 201
-    assert response.json() == {'id': 1, 'name': 'test', 'price': '1.00', 'categories': []}
+    assert response.json() == {'id': new_product.id, 'name': 'test', 'price': '1.00', 'categories': []}
     assert Product.objects.count() == 1
 
 
@@ -32,7 +37,7 @@ def test_product_update(client):
         url, data={"name": "test", "price": 2}, content_type="application/json"
     )
     assert response.status_code == 200
-    assert response.json() == {'id': 1, 'name': 'test', 'price': '2.00', 'categories': []}
+    assert response.json() == {'id': product.id, 'name': 'test', 'price': '2.00', 'categories': []}
     assert Product.objects.filter(name="test").filter(price=2).exists()
 
 
@@ -43,7 +48,7 @@ def test_product_partitial_update(client):
         url, data={"name": "test"}, content_type="application/json"
     )
     assert response.status_code == 200
-    assert response.json() == {'id': 1, 'name': 'test', 'price': '1.00', 'categories': []}
+    assert response.json() == {'id': product.id, 'name': 'test', 'price': '1.00', 'categories': []}
     assert Product.objects.filter(name="test").exists()
 
 
@@ -68,12 +73,13 @@ def test_category_of_product_list(client):
     assert response.json() == []
     product.categories.add(category)
     response = client.get(url_with_params)
-    assert response.json() == [{'id': 1, 'name': 'one', 'parent': None}]
+    assert response.json() == [{'id': category.id, 'name': 'one', 'parent': None}]
     category_two = Category.objects.create(name="two")
     product.categories.add(category_two)
     response = client.get(url_with_params)
     assert response.json() == [
-        {'id': 1, 'name': 'one', 'parent': None}, {'id': 2, 'name': 'two', 'parent': None}
+        {'id': category.id, 'name': 'one', 'parent': None},
+        {'id': category_two.id, 'name': 'two', 'parent': None}
     ]
 
 
@@ -84,4 +90,6 @@ def test_product_list_by_category_list(client):
     assert response.json() == []
     product.categories.add(category)
     response = client.get(reverse("product_list_by_category_list", args=[category.id]))
-    assert response.json() == [{'id': 1, 'name': 'one', 'price': '1.00', 'categories': [1]}]
+    assert response.json() == [
+        {'id': product.id, 'name': 'one', 'price': '1.00', 'categories': [category.id]}
+    ]
