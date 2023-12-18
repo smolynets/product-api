@@ -12,6 +12,21 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 from pathlib import Path
 
+from dotenv import load_dotenv
+import environ
+
+# Load environment variables from a .env file (optional but recommended)
+load_dotenv()
+
+# Build paths inside the project like this: BASE_DIR / 'subdir'.
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+# Use environ to simplify configuration
+env = environ.Env()
+
+# Read the .env file for default values
+environ.Env.read_env()
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -79,14 +94,20 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 
 DATABASES = {
     'default': {
-        "ENGINE": "django.db.backends.postgresql",
-        "HOST": "db",
-        "NAME": "postgres",
-        "USER": "postgres",
-        "PASSWORD": "postgres",
-        "PORT": 5432,
+        "ENGINE": env("ENGINE"),
+        "HOST": env("HOST"),
+        "NAME": env("NAME"),
+        "USER": env("USER"),
+        "PASSWORD": env("PASSWORD"),
+        "PORT": env("PORT"),
     }
 }
+
+# EMAIL_HOST = env('EMAIL_HOST', default='localhost')
+# EMAIL_PORT = env('EMAIL_PORT', default=25)
+# EMAIL_USE_TLS = env('EMAIL_USE_TLS', default=False)
+# EMAIL_HOST_USER = env('EMAIL_HOST_USER', default='')
+# EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD', default='')
 
 
 # Password validation

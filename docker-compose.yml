@@ -20,15 +20,7 @@ services:
         volumes:
             - static_volume:/app/django_static
         expose:
-            - 8000     
-        environment:
-            DEBUG: "True"
-            DJANGO_DB: postgresql
-            POSTGRES_HOST: db
-            POSTGRES_NAME: postgres
-            POSTGRES_USER: postgres
-            POSTGRES_PASSWORD: postgres
-            POSTGRES_PORT: 5432
+            - 8000
     db:
         container_name: db
         image: postgres:13.0-alpine

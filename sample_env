@@ -1,0 +1,13 @@
+# .env
+
+#general settings
+SECRET_KEY=mysecretkey
+DEBUG=True
+
+# db settings
+ENGINE=django.db.backends.postgresql
+HOST=db
+NAME=postgres
+USER=postgres
+PASSWORD=postgres
+PORT=5432
