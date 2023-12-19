@@ -11,19 +11,19 @@ A product can belong to multiple categories.
 #### REST API:
 ##### Implement a REST API with the following capabilities:
 - a. Create, update, and delete categories and products. - CRUD endpoints
-- b. Change the parent category of a category.
+- b. Change the parent category of a category -
 	Patch (/category/{id}/)
-- c. For a given list of products, retrieve all categories containing these products.
+- c. For a given list of products, retrieve all categories containing these products -
 	GET (/category-of-product-list/?product_ids=1&product_ids=2)
-- d. For a given category, retrieve a list of all products present in this category and its descendant categories of all levels.
+- d. For a given category, retrieve a list of all products present in this category and its descendant categories of all levels -
 	I believe it should be two separate endpoint:
-	1. For a given category, retrieve a list of all products present in this category
+	1. For a given category, retrieve a list of all products present in this category -
 		GET (product-by-category-list/<int:category_id>/)
-	2. Its descendant categories of all levels
+	2. Its descendant categories of all levels -
 		GET (category-parents-list/<int:category_id>/)
-- e. For a given list of categories, retrieve the count of product offerings in each category.
+- e. For a given list of categories, retrieve the count of product offerings in each category -
 	GET (/category-product-offering-count-apiview/?category_ids=1&category_ids=2)
-- f. For a given list of categories, retrieve the total count of unique product offerings.
+- f. For a given list of categories, retrieve the total count of unique product offerings -
 	GET (/category-product-total-offering-count-apiview/?category_ids=1&category_ids=2)
 #### OpenAPI/Swagger Specification:
 Provide a detailed specification of the API in OpenAPI/Swagger format - /swagger
