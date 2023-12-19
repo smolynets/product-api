@@ -37,7 +37,14 @@ Provide a Docker Compose configuration for deploying your solution.
 ##### For set test data:
 	docker exec -it server python manage.py loaddata productapp_initial_data.json
 
+##### Create .env file:
+	copy sample_env .env
 
-Use 0.0.0.0 url in browser\
-Fow admin site - 0.0.0.0/admin\
-Fow documentation - 0.0.0.0/swager
+##### Fow access to site:
+	0.0.0.0
+
+##### Fow access to admin part:
+	0.0.0.0/admin
+
+##### Fow access to swagger documentation:
+	0.0.0.0/swager
