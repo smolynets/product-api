@@ -12,7 +12,7 @@ A product can belong to multiple categories.
 ##### Implement a REST API with the following capabilities:
 - a. Create, update, and delete categories and products. - CRUD endpoints
 - b. Change the parent category of a category -
-	Patch (/category/{id}/)
+	PATCH (/category/{id}/)
 - c. For a given list of products, retrieve all categories containing these products -
 	GET (/category-of-product-list/?product_ids=1&product_ids=2)
 - d. For a given category, retrieve a list of all products present in this category and its descendant categories of all levels -
