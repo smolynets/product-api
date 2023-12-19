@@ -30,7 +30,8 @@ class ProductViewSet(viewsets.ModelViewSet):
 
 class CategoryListAPIView(generics.ListAPIView):
     """
-    For a given list of products, retrieve all categories containing these products
+    For a given list of products, retrieve all categories containing these products.
+    For example - /category-of-product-list/?product_ids=1&product_ids=2
     """
     serializer_class = CategorySerializer
 
@@ -64,7 +65,8 @@ class CategoryDetailsView(generics.RetrieveAPIView):
 
 class CategoryProductofferingCountAPIView(generics.ListAPIView):
     """
-    For a given list of categories, retrieve the count of product offerings in each category
+    For a given list of categories, retrieve the count of product offerings in each category.
+    For example - /category-product-offering-count-apiview/?category_ids=1&category_ids=2
     """
     serializer_class = CategoryOfferProductSerializer
 
@@ -77,7 +79,8 @@ class CategoryProductofferingCountAPIView(generics.ListAPIView):
 
 class CategoryProductTotalofferingCountAPIView(APIView):
     """
-    For a given list of categories, retrieve the total count of unique product offerings
+    For a given list of categories, retrieve the total count of unique product offerings.
+    For example - /category-product-total-offering-count-apiview/?category_ids=1&category_ids=2
     """
     def get(self, request, format=None):
         category_ids = self.request.query_params.getlist('category_ids', [])

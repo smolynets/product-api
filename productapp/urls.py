@@ -18,7 +18,7 @@ router.register(r"product", ProductViewSet, basename="product")
 urlpatterns = [
     path('category-of-product-list/', CategoryListAPIView.as_view(), name="category-of-product-list"),
     path(
-        'product-list-by-category-list/<int:category_id>/',
+        'product-by-category-list/<int:category_id>/',
         ProductListByCategoryView.as_view(),
         name="product_list_by_category_list"
     ),
