@@ -38,6 +38,10 @@ Provide a Docker Compose configuration for deploying your solution - server, db 
 
 
 #### Setup:
+
+##### Create .env file:
+	cp sample_env .env
+
 ##### Run in project root directory:
 	docker-compose up --build
 
@@ -46,9 +50,6 @@ Provide a Docker Compose configuration for deploying your solution - server, db 
 
 ##### For set test data:
 	docker exec -it server python manage.py loaddata productapp_initial_data.json
-
-##### Create .env file:
-	copy sample_env .env
 
 ##### Fow access to site:
 	0.0.0.0
