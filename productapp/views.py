@@ -13,7 +13,6 @@ from productapp.serializers import (
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from django.db.models import Count
-from rest_framework.views import APIView
 
 
 class CategoryViewSet(viewsets.ModelViewSet):
