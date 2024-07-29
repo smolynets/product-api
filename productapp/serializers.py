@@ -29,11 +29,8 @@ class ProductSerializer(serializers.ModelSerializer):
 
 
 class CategoryOfferProductSerializer(serializers.ModelSerializer):
-    num_products = serializers.SerializerMethodField()
+    num_products = serializers.IntegerField()
 
     class Meta:
         model = Category
         fields = ("id", "name", "num_products")
-
-    def get_num_products(self, instance):
-        return instance.num_products
