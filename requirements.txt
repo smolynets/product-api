@@ -7,3 +7,4 @@ pytest-django==4.7.0
 ipdb==0.13.13
 django-extensions==3.2.3
 django-environ==0.11.2
+djangorestframework-simplejwt==5.3.1

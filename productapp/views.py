@@ -13,6 +13,8 @@ from productapp.serializers import (
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from django.db.models import Count
+from rest_framework.permissions import IsAuthenticated
+from rest_framework_simplejwt.authentication import JWTAuthentication
 
 
 class CategoryViewSet(viewsets.ModelViewSet):
@@ -23,6 +25,7 @@ class CategoryViewSet(viewsets.ModelViewSet):
 
 class ProductViewSet(viewsets.ModelViewSet):
 
+    permission_classes = [IsAuthenticated]
     serializer_class = ProductSerializer
     queryset = Product.objects.all()
 
